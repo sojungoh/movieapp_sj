@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Movie.css";
 
-function Movie({ title, year, summary, poster, genres }) {
+function Movie({ id, title, year, summary, poster, genres }) {
   return (
     <Link
+      className="hyperlink"
       to={{
-        pathname: "/movie-detail",
+        pathname: `/movie/${id}`,
         state: {
           title,
           year,
@@ -22,7 +23,6 @@ function Movie({ title, year, summary, poster, genres }) {
         <div className="movie-data">
           <h3 className="movie-title">{title}</h3>
           <h5 className="movie-year">{year}</h5>
-          <p className="movie-summary">{summary}</p>
           <ul className="movie-genres">
             {genres &&
               genres.map((genre, index) => (
@@ -31,6 +31,7 @@ function Movie({ title, year, summary, poster, genres }) {
                 </li>
               ))}
           </ul>
+          <p className="movie-summary">{summary}</p>
         </div>
       </div>
     </Link>
